@@ -1,0 +1,52 @@
+<ul class="<?php echo $this->level; ?>"><?php
+    $odd = true;
+    foreach ($this->items as $item) {
+        // get title of page
+        $title = $item['pageTitle'] ? $item['pageTitle'] : $item['title'];
+
+        // build css classes
+        $class = $this->level;
+        if ($item['class']) {
+            $class .= ' '.$item['class'];
+        }
+        if ($odd) {
+            $class .= ' odd';
+        }
+        else {
+            $class .= ' even';
+        }
+        if ($item['isActive']) {
+            $class .= ' active';
+        }
+
+        // output opening li
+        ?><li class="<?php echo $class ?>"><?php
+
+        // output tree-elements
+        ?><div class="vertical">&nbsp;</div><div class="horizontal">&nbsp;</div><?php
+
+        // output span-item
+        if ($item['isActive']) {
+            ?><span title="<?php echo $title  ?>" class="<?php echo $class ?>"><?php echo $item['link']; ?></span><?php
+        }
+
+        // output a-item
+        else {
+            ?><a href="<?php echo $item['href'] ?>"
+                 title="<?php echo $title  ?>"<?php
+                if ($item['accesskey'] != ''): ?> accesskey="<?php echo $item['accesskey'] ?>"<?php endif;
+                if ($item['tabindex']): ?> tabindex="<?php echo $item['tabindex'] ?>"<?php endif;
+                if ($item['nofollow']): ?> rel="nofollow"<?php endif;
+                echo $item['target'];
+                ?>	class="<?php echo $class ?>"><?php echo $item['link']; ?></a><?php
+        }
+
+        // output subitems
+        echo $item['subitems'];
+
+        // output closing li
+        ?></li><?php
+
+        $odd = !$odd;
+    }
+?></ul>

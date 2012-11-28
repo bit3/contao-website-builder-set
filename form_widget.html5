@@ -1,0 +1,12 @@
+<?php if (!$this->tableless): ?>
+<tr class="<?php echo $this->rowClass; ?>">
+	<td class="col_0 col_first"><?php echo $this->generateLabel(); ?></td>
+	<td class="col_1 col_last"><?php echo $this->generateWithError(); ?></td>
+</tr>
+<?php else: ?>
+<div class="widget widget-<?php echo $this->type; if ($this->class): ?> widget-<?php echo implode(' widget-', preg_split('#\s+#', $this->class)); endif; ?> ">
+	<span class="invisible"><?php echo $this->generateLabel(); ?></span>
+	<?php echo $this->generate(); ?>
+	<?php echo $this->getErrorAsHTML(); ?>
+</div>
+<?php endif; ?>
