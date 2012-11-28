@@ -1,0 +1,162 @@
+/**
+ * Stylesheet for content styles.
+ *
+ * @author  Tristan Lins <tristan.lins@bit3.de>
+ * @link    http://bit3.de
+ * @licence http://creativecommons.org/publicdomain/zero/1.0/ CC-0
+ * @require jQuery
+ */
+
+/** --- Text format ----------------------------------------------------- */
+body {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 12px;
+	color: #000000;
+}
+pre,code {
+	font-family: Monospace, sans;
+	font-size: 12px;
+}
+
+p {
+	line-height: 1.5em;
+}
+p, pre, blockquote, table, ol, ul, form {
+	margin-bottom: 1em; /* Should match the font size */
+}
+
+/** --- Headline format ------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+	font-family: Verdana, Arial, sans-serif;
+	font-weight: normal;
+}
+h1 {
+	font-size: 200%;
+}
+h2 {
+	font-size: 180%;
+}
+h3 {
+	font-size: 160%;
+}
+h4 {
+	font-size: 140%;
+}
+h5 {
+	font-size: 120%;
+}
+h6 {
+	font-size: 100%;
+}
+
+/** --- Link format ----------------------------------------------------- */
+a,
+a:hover,
+a:focus,
+a:visited,
+a:active {
+	color: #0000ff;
+	text-decoration: none;
+}
+
+/** --- Listings -------------------------------------------------------- */
+ul,
+ol,
+dl {
+	line-height: 1.5em;
+	margin: 0 0 1em 1em;
+}
+ul li {
+	list-style-type: disc;
+}
+ul ul li {
+	list-style-type: circle;
+}
+
+ol li {
+	list-style-type: decimal;
+}
+ol ol li {
+	list-style-type: lower-latin;
+}
+
+li {
+	margin-left: 0.8em;
+	line-height: 1.5em;
+}
+
+dt {
+	font-weight: bold;
+}
+dd {
+	margin: 0 0 1em 0.8em;
+}
+
+/** --- Images ---------------------------------------------------------- */
+img {
+	vertical-align: middle;
+}
+
+/** --- Formular layout ------------------------------------------------- */
+input, button, textarea, select {
+	font-family: inherit;
+	font-size: 100%;
+	font-weight: inherit;
+}
+
+/** --- Table layout ---------------------------------------------------- */
+table {
+	font-size: inherit;
+}
+caption, th {
+	font-weight: bold;
+}
+
+/** --- Generic formats ------------------------------------------------- */
+.float_left {
+	float: left;
+	display: inline;
+	margin-right: 1em;
+	margin-bottom: 0.15em;
+}
+.float_right {
+	float: right;
+	display: inline;
+	margin-left: 1em;
+	margin-bottom: 0.15em;
+}
+.center {
+	display: block;
+	text-align: center;
+	margin: 0.5em auto;
+}
+
+.small {
+	font-size: 85%;
+}
+.big {
+	font-size: 125%;
+}
+.giant {
+	font-size: 200%;
+}
+
+.align_left {
+	text-align: left;
+}
+.align_right {
+	text-align: right;
+}
+.align_center {
+	text-align: center;
+}
+.align_justify {
+	text-align: justify;
+}
+
+blockquote, cite, q {
+	font-style: italic;
+}
+blockquote {
+	margin: 0 0 1em 1.6em;
+}

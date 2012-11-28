@@ -1,0 +1,64 @@
+/**
+ * Stylesheet for basic layout styles.
+ *
+ * @author  Tristan Lins <tristan.lins@bit3.de>
+ * @link    http://bit3.de
+ * @licence http://creativecommons.org/publicdomain/zero/1.0/ CC-0
+ * @require jQuery
+ */
+
+/** --- Sitemap --------------------------------------------------------- */
+.tree {
+	ul,
+	li {
+		list-style-type: none;
+		margin-bottom: 0;
+	}
+	li {
+		min-height: 2em;
+		line-height: 2em;
+		position: relative;
+	}
+	.horizontal,
+	.vertical {
+		position: absolute;
+		overflow: hidden;
+		background: #ccc;
+	}
+	.horizontal {
+		top: .9em;
+		left: -1em;
+		width: .75em;
+		height: 2px;
+	}
+	.vertical {
+		top: 0;
+		height: 100%;
+		left: -1em;
+		width: 2px;
+	}
+	li.last > .vertical {
+		height: .9em;
+	}
+}
+
+/** --- Accordion ------------------------------------------------------- */
+.toggler,
+.toggler-active {
+	cursor: pointer;
+	background: none no-repeat 4px center transparent;
+	padding: .25em 1em .25em 22px;
+}
+.toggler {
+	background-image: url(../images/collapsed.gif);
+}
+.toggler-active {
+	background-image: url(../images/open.gif);
+}
+.accordion_content {
+	padding: 1em 1em 0;
+}
+.accordion_content .accordion,
+.ce_accordion {
+	margin-bottom: 1em;
+}
