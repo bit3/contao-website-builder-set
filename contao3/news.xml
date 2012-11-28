@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wb:dataset xmlns:wb="http://contao.bit3.de/website_builder"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation="http://contao.bit3.de/website_builder http://contao.bit3.de/website_builder/schema.xsd">
+	<wb:name>(Contao 3) Nachrichtenarchiv - deutsch</wb:name>
+	<wb:description>Erstellt ein neues Nachrichtenarchiv, sowie eine Teaser-, Archiv- und Leserseiten.</wb:description>
+
+	<wb:variable name="root_page">
+		<wb:label>Basisseite</wb:label>
+		<wb:description>Die Basisseite, in der die neuen Seiten eingefügt werden.</wb:description>
+		<wb:inputType>pageTree</wb:inputType>
+		<wb:eval>
+			<wb:fieldType>radio</wb:fieldType>
+		</wb:eval>
+	</wb:variable>
+
+	<wb:variable name="theme">
+		<wb:label>Theme</wb:label>
+		<wb:description>Das Theme, dem die Module hinzugefügt werden sollen.</wb:description>
+		<wb:inputType>select</wb:inputType>
+		<wb:foreignKey>tl_theme.name</wb:foreignKey>
+	</wb:variable>
+
+	<wb:variable name="news_archive_title">
+		<wb:label>Nachrichtenarchiv</wb:label>
+		<wb:description>Der Name des Nachrichtenarchiv.</wb:description>
+	</wb:variable>
+
+	<!-- Teaser-Seite -->
+	<wb:row table="tl_page" var="page_listing">
+		<wb:field name="pid">$root_page</wb:field>
+		<wb:field name="title">$news_archive_title</wb:field>
+		<wb:field name="type">regular</wb:field>
+		<wb:field name="language" inherit="true"/>
+		<wb:field name="published">1</wb:field>
+		<!-- Artikel -->
+		<wb:child table="tl_article">
+			<wb:field name="title">$news_archive_title</wb:field>
+			<wb:field name="inColumn">main</wb:field>
+			<wb:field name="published">1</wb:field>
+			<!-- Inhaltselement -->
+			<wb:child table="tl_content">
+				<wb:field name="type">module</wb:field>
+				<wb:field name="module">$module_teaser.id</wb:field>
+			</wb:child>
+		</wb:child>
+
+		<!-- Archiv-Seite -->
+		<wb:child table="tl_page" var="page_archive">
+			<wb:field name="title">Archiv</wb:field>
+			<wb:field name="type">regular</wb:field>
+			<wb:field name="language" inherit="true"/>
+			<wb:field name="published">1</wb:field>
+			<!-- Artikel -->
+			<wb:child table="tl_article">
+				<wb:field name="title">Archiv</wb:field>
+				<wb:field name="inColumn">main</wb:field>
+				<wb:field name="published">1</wb:field>
+				<!-- Inhaltselement -->
+				<wb:child table="tl_content">
+					<wb:field name="type">module</wb:field>
+					<wb:field name="module">$module_archive.id</wb:field>
+				</wb:child>
+			</wb:child>
+		</wb:child>
+
+		<!-- Nachrichtenleser-Seite -->
+		<wb:child table="tl_page" var="page_reader">
+			<wb:field name="title">Nachricht</wb:field>
+			<wb:field name="type">regular</wb:field>
+			<wb:field name="language" inherit="true"/>
+			<wb:field name="published">1</wb:field>
+			<!-- Artikel -->
+			<wb:child table="tl_article">
+				<wb:field name="title">Nachricht</wb:field>
+				<wb:field name="inColumn">main</wb:field>
+				<wb:field name="published">1</wb:field>
+				<!-- Inhaltselement -->
+				<wb:child table="tl_content">
+					<wb:field name="type">module</wb:field>
+					<wb:field name="module">$module_reader.id</wb:field>
+				</wb:child>
+			</wb:child>
+		</wb:child>
+	</wb:row>
+
+	<!-- Nachrichtenarchiv -->
+	<wb:row table="tl_news_archive" var="news_archive">
+		<wb:field name="title">$news_archive_title</wb:field>
+		<wb:field name="jumpTo">$page_reader.id</wb:field>
+	</wb:row>
+
+	<!-- Module -->
+	<wb:row table="tl_module" var="module_teaser">
+		<wb:field name="pid">$theme</wb:field>
+		<wb:field name="type">newslist</wb:field>
+		<wb:field name="name">$news_archive_title - Teaser</wb:field>
+		<wb:field name="news_archives" force-array="true">$news_archive.id</wb:field>
+		<wb:field name="news_numberOfItems">3</wb:field>
+		<wb:field name="news_template">news_latest</wb:field>
+	</wb:row>
+	<wb:row table="tl_module" var="module_archive">
+		<wb:field name="pid">$theme</wb:field>
+		<wb:field name="type">newsarchive</wb:field>
+		<wb:field name="name">$news_archive_title - Archiv</wb:field>
+		<wb:field name="news_archives" force-array="true">$news_archive.id</wb:field>
+		<wb:field name="news_jumpToCurrent">show_current</wb:field>
+		<wb:field name="news_template">news_short</wb:field>
+		<wb:field name="news_format">news_month</wb:field>
+	</wb:row>
+	<wb:row table="tl_module" var="module_reader">
+		<wb:field name="pid">$theme</wb:field>
+		<wb:field name="type">newsreader</wb:field>
+		<wb:field name="name">$news_archive_title - Leser</wb:field>
+		<wb:field name="news_archives" force-array="true">$news_archive.id</wb:field>
+		<wb:field name="news_template">news_full</wb:field>
+	</wb:row>
+</wb:dataset>

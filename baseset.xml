@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wb:datasets xmlns:wb="http://contao.bit3.de/website_builder"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://contao.bit3.de/website_builder http://contao.bit3.de/website_builder/schema.xsd">
+  <wb:import>contao3/user_group.xml</wb:import>
+  <wb:import>contao3/website.xml</wb:import>
+  <wb:import>contao3/events.xml</wb:import>
+  <wb:import>contao3/news.xml</wb:import>
+  <wb:import>contao3/kontaktform.xml</wb:import>
+
+  <wb:import>contao2/user_group.xml</wb:import>
+  <wb:import>contao2/website.xml</wb:import>
+  <wb:import>contao2/events.xml</wb:import>
+  <wb:import>contao2/news.xml</wb:import>
+  <wb:import>contao2/kontaktform.xml</wb:import>
+</wb:datasets>

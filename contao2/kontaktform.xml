@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wb:dataset xmlns:wb="http://contao.bit3.de/website_builder"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation="http://contao.bit3.de/website_builder http://contao.bit3.de/website_builder/schema.xsd"
+			id="kontaktform-de">
+	<wb:name>(Contao 2) Kontaktformular - deutsch</wb:name>
+	<wb:description>Erstellt ein Kontaktformular.</wb:description>
+
+	<wb:variable name="root_page">
+		<wb:label>Basisseite</wb:label>
+		<wb:description>Die Basisseite, in der die neuen Seiten eingefügt werden.</wb:description>
+		<wb:inputType>pageTree</wb:inputType>
+		<wb:eval>
+			<wb:fieldType>radio</wb:fieldType>
+		</wb:eval>
+	</wb:variable>
+
+	<wb:variable name="title">
+		<wb:label>Kontaktformulartitel</wb:label>
+		<wb:description>Der Titel für das Kontaktformular.</wb:description>
+		<wb:default>Kontakt</wb:default>
+	</wb:variable>
+
+	<wb:variable name="email">
+		<wb:label>Empfänger E-Mail für Kontaktanfragen</wb:label>
+		<wb:description>Die E-Mail Adresse für Empfänger des Kontaktformulars.</wb:description>
+		<wb:eval>
+			<wb:rgxp>email</wb:rgxp>
+		</wb:eval>
+	</wb:variable>
+
+	<!-- Kontaktformular -->
+	<wb:row table="tl_form" var="form">
+		<wb:field name="title">$title</wb:field>
+		<wb:field name="jumpTo">$page_contact_confirm</wb:field>
+		<wb:field name="tableless">1</wb:field>
+		<wb:field name="sendViaEmail">1</wb:field>
+		<wb:field name="recipient">$email</wb:field>
+		<wb:field name="subject">Kontaktanfrage</wb:field>
+		<wb:field name="format">raw</wb:field>
+		<wb:field name="method">POST</wb:field>
+		<wb:field name="attributes">a:2:{i:0;s:0:"";i:1;s:0:"";}</wb:field>
+		<wb:field name="tableless">1</wb:field>
+		<wb:field name="storeFormdata">1</wb:field>
+		<wb:field name="efgAliasField">email</wb:field>
+
+		<!-- Name -->
+		<wb:child table="tl_form_field">
+			<wb:field name="type">text</wb:field>
+			<wb:field name="name">name</wb:field>
+			<wb:field name="label">Name</wb:field>
+			<wb:field name="mandatory">1</wb:field>
+			<wb:field name="rgxp"></wb:field>
+			<wb:field name="maxlength">0</wb:field>
+		</wb:child>
+
+		<!-- Telefon -->
+		<wb:child table="tl_form_field">
+			<wb:field name="type">text</wb:field>
+			<wb:field name="name">telefon</wb:field>
+			<wb:field name="label">Telefon</wb:field>
+			<wb:field name="rgxp">phone</wb:field>
+			<wb:field name="maxlength">0</wb:field>
+		</wb:child>
+
+		<!-- Mobil -->
+		<wb:child table="tl_form_field">
+			<wb:field name="type">text</wb:field>
+			<wb:field name="name">mobil</wb:field>
+			<wb:field name="label">Mobil</wb:field>
+			<wb:field name="rgxp">phone</wb:field>
+			<wb:field name="maxlength">0</wb:field>
+		</wb:child>
+
+		<!-- E-Mail -->
+		<wb:child table="tl_form_field">
+			<wb:field name="type">text</wb:field>
+			<wb:field name="name">email</wb:field>
+			<wb:field name="label">E-Mail</wb:field>
+			<wb:field name="mandatory">1</wb:field>
+			<wb:field name="rgxp">email</wb:field>
+			<wb:field name="maxlength">0</wb:field>
+		</wb:child>
+
+		<!-- Homepage -->
+		<wb:child table="tl_form_field">
+			<wb:field name="type">text</wb:field>
+			<wb:field name="name">homepage</wb:field>
+			<wb:field name="label">Homepage</wb:field>
+			<wb:field name="rgxp">url</wb:field>
+			<wb:field name="maxlength">0</wb:field>
+		</wb:child>
+
+		<!-- Nachricht -->
+		<wb:child table="tl_form_field">
+			<wb:field name="type">textarea</wb:field>
+			<wb:field name="name">nachricht</wb:field>
+			<wb:field name="label">Ihre Nachricht</wb:field>
+			<wb:field name="mandatory">1</wb:field>
+			<wb:field name="rgxp"></wb:field>
+			<wb:field name="size" eval="true">array(8, 10)</wb:field>
+		</wb:child>
+
+		<!-- Captcha -->
+		<wb:child table="tl_form_field">
+			<wb:field name="type">captcha</wb:field>
+			<wb:field name="label">Sicherheitsabfrage</wb:field>
+		</wb:child>
+
+		<!-- Absenden -->
+		<wb:child table="tl_form_field">
+			<wb:field name="type">submit</wb:field>
+			<wb:field name="slabel">absenden</wb:field>
+		</wb:child>
+	</wb:row>
+
+	<!-- Kontakt -->
+	<wb:row table="tl_page" var="page_contact">
+		<wb:field name="pid">$root_page</wb:field>
+		<wb:field name="title">Kontakt</wb:field>
+		<wb:field name="type">regular</wb:field>
+		<wb:field name="language" inherit="true"/>
+		<wb:field name="sitemap">map_always</wb:field>
+		<wb:field name="menu_visibility">map_always</wb:field>
+		<wb:field name="published">1</wb:field>
+		<wb:field name="includeChmod">1</wb:field>
+		<wb:field name="cuser" inherit="true"/>
+		<wb:field name="cgroup" inherit="true"/>
+		<wb:field name="chmod"></wb:field>
+		<wb:field name="noSearch">1</wb:field>
+
+		<!-- Artikel -->
+		<wb:child table="tl_article">
+			<wb:field name="title" inherit="true" inheritTable="tl_page"/>
+			<wb:placeholder name="article"/>
+
+			<!-- Inhaltselement -->
+			<wb:child table="tl_content">
+				<wb:field name="type">headline</wb:field>
+				<wb:field name="headline" eval="true">array('value'=>'Kontakt', 'unit'=>'h1')</wb:field>
+			</wb:child>
+			<wb:child table="tl_content">
+				<wb:field name="type">form</wb:field>
+				<wb:field name="form">$form</wb:field>
+			</wb:child>
+		</wb:child>
+
+		<!-- Kontaktformular Bestätigungsseite -->
+		<wb:child table="tl_page" var="page_contact_confirm">
+			<wb:field name="title">Anfrage versendet</wb:field>
+			<wb:field name="type">regular</wb:field>
+			<wb:field name="language" inherit="true"/>
+			<wb:field name="sitemap">map_always</wb:field>
+			<wb:field name="menu_visibility">map_always</wb:field>
+			<wb:field name="published">1</wb:field>
+			<wb:field name="sitemap">map_never</wb:field>
+			<wb:field name="hide">1</wb:field>
+			<wb:field name="menu_visibility">map_never</wb:field>
+			<wb:field name="noSearch">1</wb:field>
+
+			<!-- Artikel -->
+			<wb:child table="tl_article">
+				<wb:field name="title" inherit="true" inheritTable="tl_page"/>
+				<wb:placeholder name="article"/>
+
+				<!-- Inhaltselement -->
+				<wb:child table="tl_content">
+					<wb:field name="type">text</wb:field>
+					<wb:field name="headline" eval="true">array('value'=>'Kontakt', 'unit'=>'h1')</wb:field>
+					<wb:field name="text"><![CDATA[<p>Ihre Anfrage wurde versendet!</p>]]></wb:field>
+				</wb:child>
+			</wb:child>
+		</wb:child>
+	</wb:row>
+</wb:dataset>
