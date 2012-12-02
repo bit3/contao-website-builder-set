@@ -367,6 +367,56 @@ vor.</p>]]></wb:field>
 		</wb:child>
 	</wb:row>
 
+	<!-- SCSS Assetic filter -->
+	<wb:row table="tl_assetic_filter" var="assetic_scss_filter">
+		<wb:field name="type">scss</wb:field>
+		<wb:field name="note">$theme_name - Standard SCSS Filter</wb:field>
+		<wb:field name="sassPath">/usr/local/bin/sass</wb:field>
+	</wb:row>
+
+	<!-- Compass Assetic filter -->
+	<wb:row table="tl_assetic_filter" var="assetic_compass_filter">
+		<wb:field name="type">compass</wb:field>
+		<wb:field name="note">$theme_name - Standard Compass Filter</wb:field>
+		<wb:field name="compassPath">/usr/local/bin/compass</wb:field>
+	</wb:row>
+
+	<!-- YUI-CSS Assetic filter -->
+	<wb:row table="tl_assetic_filter" var="assetic_yuicss_filter">
+		<wb:field name="type">yuiCss</wb:field>
+		<wb:field name="note">$theme_name - YUI CSS</wb:field>
+		<wb:field name="yuiPath">/usr/share/yui-compressor/yui-compressor.jar</wb:field>
+	</wb:row>
+
+	<!-- YUI-JS Assetic filter -->
+	<wb:row table="tl_assetic_filter" var="assetic_yuijs_filter">
+		<wb:field name="type">yuiJs</wb:field>
+		<wb:field name="note">$theme_name - YUI JS</wb:field>
+		<wb:field name="yuiPath">/usr/share/yui-compressor/yui-compressor.jar</wb:field>
+	</wb:row>
+
+	<!-- CSS Assetic filter chain -->
+	<wb:row table="tl_assetic_filter_chain" var="assetic_css_chain">
+		<wb:field name="type">css</wb:field>
+		<wb:field name="name">$theme_name - CSS Filter</wb:field>
+		<wb:field name="filters" eval="true">
+			array(
+				'filter:{$assetic_yuicss_filter}'
+			)
+		</wb:field>
+	</wb:row>
+
+	<!-- JS Assetic filter chain -->
+	<wb:row table="tl_assetic_filter_chain" var="assetic_js_chain">
+		<wb:field name="type">js</wb:field>
+		<wb:field name="name">$theme_name - JS Filter</wb:field>
+		<wb:field name="filters" eval="true">
+			array(
+				'filter:{$assetic_yuijs_filter}'
+			)
+		</wb:field>
+	</wb:row>
+
 	<wb:row table="tl_theme">
 		<wb:field name="name">$theme_name</wb:field>
 		<wb:field name="author">$this.User.name</wb:field>
@@ -376,116 +426,142 @@ vor.</p>]]></wb:field>
 		<!-- Standardlayout -->
 		<wb:child table="tl_layout" var="layout">
 			<wb:field name="name">Standardlayout</wb:field>
-			<wb:field name="header">1</wb:field>
+			<wb:field name="rows">3rw</wb:field>
 			<wb:field name="headerHeight" eval="true">array('value'=>'', 'unit'=>'px')</wb:field>
-			<wb:field name="footer">1</wb:field>
 			<wb:field name="footerHeight" eval="true">array('value'=>'', 'unit'=>'px')</wb:field>
 			<wb:field name="cols">3cl</wb:field>
 			<wb:field name="widthLeft" eval="true">array('value'=>200, 'unit'=>'px')</wb:field>
 			<wb:field name="widthRight" eval="true">array('value'=>200, 'unit'=>'px')</wb:field>
-			<wb:field name="wflmedia" eval="true">array('all')</wb:field>
-			<wb:field name="theme_plus_stylesheets" eval="true">array(
-				'$source_reset',
-				'$source_normalize',
-				'$source_formalize',
-				'$source_layout',
-				'$source_nav',
-				'$source_content'
+			<wb:field name="framework" eval="true">array('layout.css')</wb:field>
+			<wb:field name="theme_plus_stylesheets" eval="true">
+				array(
+					'$source_reset',
+					'$source_normalize',
+					'$source_formalize',
+					'$source_layout',
+					'$source_nav',
+					'$source_content'
 				)
 			</wb:field>
-			<wb:field name="skipTinymce">1</wb:field>
-			<wb:field name="modules" eval="true">array(
-				array('mod'=>$module_header, 'col'=>'header'),
-				array('mod'=>$module_left, 'col'=>'left'),
-				array('mod'=>$module_main, 'col'=>'main'),
-				array('mod'=>$module_right, 'col'=>'right'),
-				array('mod'=>$module_footer, 'col'=>'footer')
+			<wb:field name="modules" eval="true">
+				array(
+					array('mod'=>$module_header, 'col'=>'header'),
+					array('mod'=>$module_left, 'col'=>'left'),
+					array('mod'=>$module_main, 'col'=>'main'),
+					array('mod'=>$module_right, 'col'=>'right'),
+					array('mod'=>$module_footer, 'col'=>'footer')
 				)
 			</wb:field>
 			<wb:field name="template">fe_page</wb:field>
 			<wb:field name="doctype">html5</wb:field>
-			<wb:field name="mooSource"></wb:field>
-			<wb:field name="usejquery">1</wb:field>
-			<wb:field name="jquerySource">jquery_local</wb:field>
-			<wb:field name="theme_plus_javascripts" eval="true">array(
-				'$source_script_formalize',
-				'$source_script_placeholder'
+			<wb:field name="asseticStylesheetFilter">$assetic_css_chain</wb:field>
+			<wb:field name="asseticJavaScriptFilter">$assetic_js_chain</wb:field>
+			<wb:field name="addJQuery">1</wb:field>
+			<wb:field name="jSource">j_local</wb:field>
+			<wb:field name="jquery" eval="true">
+				array(
+					'j_accordion',
+					'j_colorbox',
+					'j_mediaelement',
 				)
 			</wb:field>
-			<wb:field name="mootools" eval="true">array(
+			<wb:field name="theme_plus_javascripts" eval="true">
+				array(
+					'$source_script_formalize',
+					'$source_script_placeholder'
 				)
 			</wb:field>
+			<wb:field name="theme_plus_javascript_lazy_load">1</wb:field>
+			<wb:field name="theme_plus_default_javascript_position">body</wb:field>
 			<wb:field name="static">1</wb:field>
 			<wb:field name="width" eval="true">array('value'=>900, 'unit'=>'px')</wb:field>
 			<wb:field name="align">center</wb:field>
 		</wb:child>
 
-		<!-- reset.less -->
-		<wb:child table="tl_theme_plus_file" var="source_reset">
-			<wb:field name="type">css_file</wb:field>
-			<wb:field name="css_file">tl_files/Themes/${theme_name}/css/reset.less</wb:field>
+		<!-- reset.scss -->
+		<wb:child table="tl_theme_plus_stylesheet" var="source_reset">
+			<wb:field name="type">file</wb:field>
+			<wb:field name="css_file">tl_files/Themes/${theme_name}/assets/css/reset.scss</wb:field>
+			<wb:field name="editor_integration" eval="true">array('default','newsletter','flash')</wb:field>
+			<wb:field name="asseticFilter">$assetic_scss_filter</wb:field>
+		</wb:child>
+
+		<!-- normalize.css -->
+		<wb:child table="tl_theme_plus_stylesheet" var="source_normalize">
+			<wb:field name="type">file</wb:field>
+			<wb:field name="css_file">tl_files/Themes/${theme_name}/assets/normalize/normalize.css</wb:field>
 			<wb:field name="editor_integration" eval="true">array('default','newsletter','flash')</wb:field>
 		</wb:child>
 
-		<!-- normalize.less -->
-		<wb:child table="tl_theme_plus_file" var="source_normalize">
-			<wb:field name="type">css_file</wb:field>
-			<wb:field name="css_file">tl_files/Themes/${theme_name}/css/normalize.css</wb:field>
+		<!-- formalize.scss -->
+		<wb:child table="tl_theme_plus_stylesheet" var="source_formalize">
+			<wb:field name="type">file</wb:field>
+			<wb:field name="css_file">tl_files/Themes/${theme_name}/assets/formalizes/css/_formalize.scss</wb:field>
+			<wb:field name="asseticFilter">$assetic_compass_filter</wb:field>
+		</wb:child>
+
+		<!-- layout.scss -->
+		<wb:child table="tl_theme_plus_stylesheet" var="source_layout">
+			<wb:field name="type">file</wb:field>
+			<wb:field name="css_file">tl_files/Themes/${theme_name}/css/layout.scss</wb:field>
+			<wb:field name="asseticFilter">$assetic_scss_filter</wb:field>
+		</wb:child>
+
+		<!-- nav.scss -->
+		<wb:child table="tl_theme_plus_stylesheet" var="source_nav">
+			<wb:field name="type">file</wb:field>
+			<wb:field name="css_file">tl_files/Themes/${theme_name}/css/nav.scss</wb:field>
+			<wb:field name="asseticFilter">$assetic_scss_filter</wb:field>
+		</wb:child>
+
+		<!-- content.scss -->
+		<wb:child table="tl_theme_plus_stylesheet" var="source_content">
+			<wb:field name="type">file</wb:field>
+			<wb:field name="css_file">tl_files/Themes/${theme_name}/css/content.scss</wb:field>
 			<wb:field name="editor_integration" eval="true">array('default','newsletter','flash')</wb:field>
-		</wb:child>
-
-		<!-- formalize.css -->
-		<wb:child table="tl_theme_plus_file" var="source_formalize">
-			<wb:field name="type">css_file</wb:field>
-			<wb:field name="css_file">tl_files/Themes/${theme_name}/css/formalize.css</wb:field>
-		</wb:child>
-
-		<!-- layout.less -->
-		<wb:child table="tl_theme_plus_file" var="source_layout">
-			<wb:field name="type">css_file</wb:field>
-			<wb:field name="css_file">tl_files/Themes/${theme_name}/css/layout.less</wb:field>
-		</wb:child>
-
-		<!-- nav.less -->
-		<wb:child table="tl_theme_plus_file" var="source_nav">
-			<wb:field name="type">css_file</wb:field>
-			<wb:field name="css_file">tl_files/Themes/${theme_name}/css/nav.less</wb:field>
-		</wb:child>
-
-		<!-- content.less -->
-		<wb:child table="tl_theme_plus_file" var="source_content">
-			<wb:field name="type">css_file</wb:field>
-			<wb:field name="css_file">tl_files/Themes/${theme_name}/css/content.less</wb:field>
-			<wb:field name="editor_integration" eval="true">array('default','newsletter','flash')</wb:field>
+			<wb:field name="asseticFilter">$assetic_scss_filter</wb:field>
 		</wb:child>
 
 		<!-- formalize.js -->
-		<wb:child table="tl_theme_plus_file" var="source_script_formalize">
-			<wb:field name="type">js_file</wb:field>
-			<wb:field name="js_file">tl_files/Themes/${theme_name}/js/jquery.formalize.js</wb:field>
+		<wb:child table="tl_theme_plus_javascript" var="source_script_formalize">
+			<wb:field name="type">file</wb:field>
+			<wb:field name="js_file">tl_files/Themes/${theme_name}/assets/formalize/js/jquery.formalize.js</wb:field>
 		</wb:child>
 
-		<!-- formalize.js -->
-		<wb:child table="tl_theme_plus_file" var="source_script_placeholder">
-			<wb:field name="type">js_file</wb:field>
-			<wb:field name="js_file">tl_files/Themes/${theme_name}/js/placeholder.js</wb:field>
+		<!-- placeholder.jquery.js -->
+		<wb:child table="tl_theme_plus_javascript" var="source_script_placeholder">
+			<wb:field name="type">file</wb:field>
+			<wb:field name="js_file">tl_files/Themes/${theme_name}/assets/js/placeholder.jquery.js</wb:field>
 		</wb:child>
 
 
 		<!-- Inhalt Kopfzeile -->
 		<wb:child table="tl_module" var="module_header_content">
 			<wb:field name="name">Layout - Kopfzeile</wb:field>
-			<wb:field name="type">module_richtext</wb:field>
-			<wb:field name="richtext"><![CDATA[<div><strong><span style="font-size: 300%;">Musterhomepage</span></strong></div>
-<div><span style="font-size: 110%;"><strong>Wir machen Ihr Muster zu etwas besonderem!</strong></span></div>]]></wb:field>
+			<wb:field name="type">html</wb:field>
+			<wb:field name="html">
+<![CDATA[<div>
+	<strong>
+		<span style="font-size: 300%;">Musterhomepage</span>
+	</strong>
+</div>
+<div>
+	<span style="font-size: 110%;">
+		<strong>Wir machen Ihr Muster zu etwas besonderem!</strong>
+	</span>
+</div>]]>
+			</wb:field>
 		</wb:child>
 
 		<!-- Inhalt Fußzeile -->
 		<wb:child table="tl_module" var="module_footer_content">
 			<wb:field name="name">Layout - Fußzeile</wb:field>
-			<wb:field name="type">module_richtext</wb:field>
-			<wb:field name="richtext">
-				<![CDATA[<p><span style="font-size: 75%;">© 2010 - {{date::Y}} Hans Mustermann</span></p>]]></wb:field>
+			<wb:field name="type">html</wb:field>
+			<wb:field name="html">
+<![CDATA[<p>
+	<span style="font-size: 75%;">© 2010 - {{date::Y}} Hans Mustermann</span>
+</p>]]>
+			</wb:field>
 		</wb:child>
 
 		<!-- Navigation Kopfzeile -->
@@ -550,11 +626,12 @@ vor.</p>]]></wb:field>
 
 		<!-- Struktur Kopfzeile -->
 		<wb:child table="tl_module" var="module_header">
-			<wb:field name="name">Struktur - Kopfzeile</wb:field>
+			<wb:field name="name">Struktur 1 - Kopfzeile</wb:field>
 			<wb:field name="type">Merger2</wb:field>
 			<wb:field name="merger_mode">all</wb:field>
 			<wb:field name="merger_template">merger_default</wb:field>
-			<wb:field name="merger_data" eval="true">array(
+			<wb:field name="merger_data" eval="true">
+				array(
 				array('content'=>$module_topnav, 'condition'=>''),
 				array('content'=>$module_header_content, 'condition'=>'')
 				)
@@ -563,11 +640,12 @@ vor.</p>]]></wb:field>
 
 		<!-- Struktur Linke Spalte -->
 		<wb:child table="tl_module" var="module_left">
-			<wb:field name="name">Struktur - Linke Spalte</wb:field>
+			<wb:field name="name">Struktur 2 - Linke Spalte</wb:field>
 			<wb:field name="type">Merger2</wb:field>
 			<wb:field name="merger_mode">all</wb:field>
 			<wb:field name="merger_template">merger_default</wb:field>
-			<wb:field name="merger_data" eval="true">array(
+			<wb:field name="merger_data" eval="true">
+				array(
 				array('content'=>$module_nav, 'condition'=>''),
 				array('content'=>$module_searchmask, 'condition'=>'')
 				)
@@ -576,11 +654,12 @@ vor.</p>]]></wb:field>
 
 		<!-- Struktur Rechte Spalte -->
 		<wb:child table="tl_module" var="module_right">
-			<wb:field name="name">Struktur - Rechte Spalte</wb:field>
+			<wb:field name="name">Struktur 2 - Rechte Spalte</wb:field>
 			<wb:field name="type">Merger2</wb:field>
 			<wb:field name="merger_mode">all</wb:field>
 			<wb:field name="merger_template">merger_default</wb:field>
-			<wb:field name="merger_data" eval="true">array(
+			<wb:field name="merger_data" eval="true">
+				array(
 				array('content'=>'inherit_all_articles_fallback', 'condition'=>'')
 				)
 			</wb:field>
@@ -588,11 +667,12 @@ vor.</p>]]></wb:field>
 
 		<!-- Struktur Hauptspalte -->
 		<wb:child table="tl_module" var="module_main">
-			<wb:field name="name">Struktur - Hauptspalte</wb:field>
+			<wb:field name="name">Struktur 2 - Hauptspalte</wb:field>
 			<wb:field name="type">Merger2</wb:field>
 			<wb:field name="merger_mode">all</wb:field>
 			<wb:field name="merger_template">merger_default</wb:field>
-			<wb:field name="merger_data" eval="true">array(
+			<wb:field name="merger_data" eval="true">
+				array(
 				array('content'=>$module_breadcrumbs, 'condition'=>''),
 				array('content'=>'article', 'condition'=>'')
 				)
@@ -601,11 +681,12 @@ vor.</p>]]></wb:field>
 
 		<!-- Struktur Fußzeile -->
 		<wb:child table="tl_module" var="module_footer">
-			<wb:field name="name">Struktur - Fußzeile</wb:field>
+			<wb:field name="name">Struktur 3 - Fußzeile</wb:field>
 			<wb:field name="type">Merger2</wb:field>
 			<wb:field name="merger_mode">all</wb:field>
 			<wb:field name="merger_template">merger_default</wb:field>
-			<wb:field name="merger_data" eval="true">array(
+			<wb:field name="merger_data" eval="true">
+				array(
 				array('content'=>$module_bottomnav, 'condition'=>''),
 				array('content'=>$module_footer_content, 'condition'=>'')
 				)
@@ -613,12 +694,33 @@ vor.</p>]]></wb:field>
 		</wb:child>
 	</wb:row>
 
+	<!-- create directory for user files -->
 	<wb:mkdir>$uploadPath/${page_name}</wb:mkdir>
+
+	<!-- create directory for theme files -->
 	<wb:mkdir>$uploadPath/Themes/${theme_name}</wb:mkdir>
+
+	<!-- create directories for assets -->
+	<wb:mkdir>$uploadPath/Themes/${theme_name}/assets/normalize</wb:mkdir>
+	<wb:mkdir>$uploadPath/Themes/${theme_name}/assets/formalize</wb:mkdir>
+
+	<!-- create directory for theme templates -->
 	<wb:mkdir>templates/${theme_name}</wb:mkdir>
+
+	<!-- load theme files -->
 	<wb:load target="$uploadPath/Themes/${theme_name}" unzip="true">
 		https://github.com/bit3/contao-WebsiteBuilderSet/archive/theme.zip
 	</wb:load>
+
+	<!-- load theme assets -->
+	<wb:load target="$uploadPath/Themes/${theme_name}/assets/normalize">
+		https://raw.github.com/necolas/normalize.css/master/normalize.css
+	</wb:load>
+	<wb:load target="$uploadPath/Themes/${theme_name}/assets/formalize" unzip="true" strip-components="2">
+		http://github.com/nathansmith/formalize/zipball/master
+	</wb:load>
+
+	<!-- load theme templates -->
 	<wb:load target="templates/${theme_name}" unzip="true">
 		https://github.com/bit3/contao-WebsiteBuilderSet/archive/templates.zip
 	</wb:load>
