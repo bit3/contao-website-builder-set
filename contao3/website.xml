@@ -117,7 +117,6 @@
 		<wb:field name="chmod">
 			a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}
 		</wb:field>
-		<wb:field name="folderAlias">1</wb:field>
 
 		<!-- 403 Seite -->
 		<wb:child table="tl_page">
@@ -481,7 +480,7 @@ vor.</p>]]></wb:field>
 		<!-- reset.scss -->
 		<wb:child table="tl_theme_plus_stylesheet" var="source_reset">
 			<wb:field name="type">file</wb:field>
-			<wb:field name="css_file">tl_files/Themes/${theme_name}/assets/css/reset.scss</wb:field>
+			<wb:field name="file">tl_files/Themes/${theme_name}/assets/css/reset.scss</wb:field>
 			<wb:field name="editor_integration" eval="true">array('default','newsletter','flash')</wb:field>
 			<wb:field name="asseticFilter">$assetic_scss_filter</wb:field>
 		</wb:child>
@@ -489,35 +488,35 @@ vor.</p>]]></wb:field>
 		<!-- normalize.css -->
 		<wb:child table="tl_theme_plus_stylesheet" var="source_normalize">
 			<wb:field name="type">file</wb:field>
-			<wb:field name="css_file">tl_files/Themes/${theme_name}/assets/normalize/normalize.css</wb:field>
+			<wb:field name="file">tl_files/Themes/${theme_name}/assets/normalize/normalize.css</wb:field>
 			<wb:field name="editor_integration" eval="true">array('default','newsletter','flash')</wb:field>
 		</wb:child>
 
 		<!-- formalize.scss -->
 		<wb:child table="tl_theme_plus_stylesheet" var="source_formalize">
 			<wb:field name="type">file</wb:field>
-			<wb:field name="css_file">tl_files/Themes/${theme_name}/assets/formalizes/css/_formalize.scss</wb:field>
+			<wb:field name="file">tl_files/Themes/${theme_name}/assets/formalizes/css/_formalize.scss</wb:field>
 			<wb:field name="asseticFilter">$assetic_compass_filter</wb:field>
 		</wb:child>
 
 		<!-- layout.scss -->
 		<wb:child table="tl_theme_plus_stylesheet" var="source_layout">
 			<wb:field name="type">file</wb:field>
-			<wb:field name="css_file">tl_files/Themes/${theme_name}/css/layout.scss</wb:field>
+			<wb:field name="file">tl_files/Themes/${theme_name}/css/layout.scss</wb:field>
 			<wb:field name="asseticFilter">$assetic_scss_filter</wb:field>
 		</wb:child>
 
 		<!-- nav.scss -->
 		<wb:child table="tl_theme_plus_stylesheet" var="source_nav">
 			<wb:field name="type">file</wb:field>
-			<wb:field name="css_file">tl_files/Themes/${theme_name}/css/nav.scss</wb:field>
+			<wb:field name="file">tl_files/Themes/${theme_name}/css/nav.scss</wb:field>
 			<wb:field name="asseticFilter">$assetic_scss_filter</wb:field>
 		</wb:child>
 
 		<!-- content.scss -->
 		<wb:child table="tl_theme_plus_stylesheet" var="source_content">
 			<wb:field name="type">file</wb:field>
-			<wb:field name="css_file">tl_files/Themes/${theme_name}/css/content.scss</wb:field>
+			<wb:field name="file">tl_files/Themes/${theme_name}/css/content.scss</wb:field>
 			<wb:field name="editor_integration" eval="true">array('default','newsletter','flash')</wb:field>
 			<wb:field name="asseticFilter">$assetic_scss_filter</wb:field>
 		</wb:child>
@@ -525,13 +524,13 @@ vor.</p>]]></wb:field>
 		<!-- formalize.js -->
 		<wb:child table="tl_theme_plus_javascript" var="source_script_formalize">
 			<wb:field name="type">file</wb:field>
-			<wb:field name="js_file">tl_files/Themes/${theme_name}/assets/formalize/js/jquery.formalize.js</wb:field>
+			<wb:field name="file">tl_files/Themes/${theme_name}/assets/formalize/js/jquery.formalize.js</wb:field>
 		</wb:child>
 
 		<!-- placeholder.jquery.js -->
 		<wb:child table="tl_theme_plus_javascript" var="source_script_placeholder">
 			<wb:field name="type">file</wb:field>
-			<wb:field name="js_file">tl_files/Themes/${theme_name}/assets/js/placeholder.jquery.js</wb:field>
+			<wb:field name="file">tl_files/Themes/${theme_name}/assets/js/placeholder.jquery.js</wb:field>
 		</wb:child>
 
 
@@ -708,7 +707,7 @@ vor.</p>]]></wb:field>
 	<wb:mkdir>templates/${theme_name}</wb:mkdir>
 
 	<!-- load theme files -->
-	<wb:load target="$uploadPath/Themes/${theme_name}" unzip="true">
+	<wb:load target="$uploadPath/Themes/${theme_name}" unzip="true" strip-components="1">
 		https://github.com/bit3/contao-WebsiteBuilderSet/archive/theme.zip
 	</wb:load>
 
@@ -721,7 +720,7 @@ vor.</p>]]></wb:field>
 	</wb:load>
 
 	<!-- load theme templates -->
-	<wb:load target="templates/${theme_name}" unzip="true">
+	<wb:load target="templates/${theme_name}" unzip="true" strip-components="1">
 		https://github.com/bit3/contao-WebsiteBuilderSet/archive/templates.zip
 	</wb:load>
 </wb:dataset>
