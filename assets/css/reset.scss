@@ -1,0 +1,19 @@
+/**
+ * Stylesheet for basic reset before normalize.
+ *
+ * @author  Tristan Lins <tristan.lins@bit3.de>
+ * @link    http://bit3.de
+ * @licence http://creativecommons.org/publicdomain/zero/1.0/ CC-0
+ */
+
+
+/* Reset margins */
+* {
+	font-size: 100.01%;
+	margin: 0;
+	padding: 0;
+}
+
+.block {
+	overflow: visible;
+}

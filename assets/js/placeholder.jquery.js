@@ -13,17 +13,19 @@ function replacePlaceholder() {
 	if ('placeholder' in i) {
 		return;
 	}
-	$$('input[placeholder], textarea[placeholder]').each(function(i) {
+	jQuery('input[placeholder], textarea[placeholder]').each(function(i) {
+		var $i = jQuery(i);
 		$(i.form).submit(function() {
-			if (i.attr('value') == i.attr('placeholder')) {
-				i.attr('value', '');
+			if ($i.attr('value') == $i.attr('placeholder')) {
+				$i.attr('value', '');
 			}
 		});
-		if (!i.attr('value')) {
-			i.attr('value', i.attr('placeholder'));
+		if (!$i.attr('value')) {
+			$i.attr('value', $i.attr('placeholder'));
 		}
-		i.bind({
+		$i.bind({
 			focus: function() {
+				$i.removeClass('fallback-placeholder-visible');
 				if (this.get('value') == this.get('placeholder'))
 				{
 					this.set('value', '');
@@ -32,12 +34,13 @@ function replacePlaceholder() {
 			blur: function() {
 				if (this.get('value') == '')
 				{
+					$i.addClass('fallback-placeholder-visible');
 					this.set('value', this.get('placeholder'));
 				}
 			}
 		});
 	});
 }
-$(document).ready(function() {
+jQuery(function($) {
 	replacePlaceholder();
 });

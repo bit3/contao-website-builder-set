@@ -1,0 +1,42 @@
+/**
+ * Stylesheet for navigation elements.
+ *
+ * @author  Tristan Lins <tristan.lins@bit3.de>
+ * @link    http://bit3.de
+ * @licence http://creativecommons.org/publicdomain/zero/1.0/ CC-0
+ */
+
+/** --- Sitemap --------------------------------------------------------- */
+.tree {
+	ul,
+	li {
+		list-style-type: none;
+		margin-bottom: 0;
+	}
+	li {
+		min-height: 2em;
+		line-height: 2em;
+		position: relative;
+	}
+	.horizontal,
+	.vertical {
+		position: absolute;
+		overflow: hidden;
+		background: #ccc;
+	}
+	.horizontal {
+		top: .9em;
+		left: -1em;
+		width: .75em;
+		height: 2px;
+	}
+	.vertical {
+		top: 0;
+		height: 100%;
+		left: -1em;
+		width: 2px;
+	}
+	li.last > .vertical {
+		height: .9em;
+	}
+}
