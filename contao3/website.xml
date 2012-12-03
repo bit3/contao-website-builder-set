@@ -109,6 +109,10 @@
 		<wb:field name="dns">$dns</wb:field>
 		<wb:field name="language">de</wb:field>
 		<wb:field name="fallback">$fallback</wb:field>
+		<wb:field name="adminEmail">$email</wb:field>
+		<wb:field name="dateFormat">d.m.Y</wb:field>
+		<wb:field name="timeFormat">H:i</wb:field>
+		<wb:field name="datimFormat">d.m.Y H:i</wb:field>
 		<wb:field name="includeLayout">1</wb:field>
 		<wb:field name="layout">$layout</wb:field>
 		<wb:field name="includeChmod">1</wb:field>
