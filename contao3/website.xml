@@ -716,7 +716,7 @@ vor.</p>]]></wb:field>
 		https://raw.github.com/necolas/normalize.css/master/normalize.css
 	</wb:load>
 	<wb:load target="$uploadPath/Themes/${theme_name}/assets/formalize" unzip="true" strip-components="2">
-		http://github.com/nathansmith/formalize/zipball/master
+		https://github.com/nathansmith/formalize/archive/master.zip
 	</wb:load>
 
 	<!-- load theme templates -->
