@@ -436,7 +436,7 @@ vor.</p>]]></wb:field>
 	<wb:row table="tl_theme">
 		<wb:field name="name">$theme_name</wb:field>
 		<wb:field name="author">$this.User.name</wb:field>
-		<wb:field name="folders" force-array="true">tl_files/Themes/${theme_name}</wb:field>
+		<wb:field name="folders" force-array="true">$uploadPath/Themes/${theme_name}</wb:field>
 		<wb:field name="templates">templates/${theme_name}</wb:field>
 
 		<!-- Standardlayout -->
@@ -497,7 +497,7 @@ vor.</p>]]></wb:field>
 		<!-- reset.scss -->
 		<wb:child table="tl_theme_plus_stylesheet" var="source_reset">
 			<wb:field name="type">file</wb:field>
-			<wb:field name="file">tl_files/Themes/${theme_name}/assets/css/reset.scss</wb:field>
+			<wb:field name="file">$uploadPath/Themes/${theme_name}/assets/css/reset.scss</wb:field>
 			<wb:field name="editor_integration" eval="true">array('default','newsletter','flash')</wb:field>
 			<wb:field name="asseticFilter">$assetic_scss_filter</wb:field>
 		</wb:child>
@@ -505,35 +505,35 @@ vor.</p>]]></wb:field>
 		<!-- normalize.css -->
 		<wb:child table="tl_theme_plus_stylesheet" var="source_normalize">
 			<wb:field name="type">file</wb:field>
-			<wb:field name="file">tl_files/Themes/${theme_name}/assets/normalize/normalize.css</wb:field>
+			<wb:field name="file">$uploadPath/Themes/${theme_name}/assets/normalize/normalize.css</wb:field>
 			<wb:field name="editor_integration" eval="true">array('default','newsletter','flash')</wb:field>
 		</wb:child>
 
 		<!-- formalize.scss -->
 		<wb:child table="tl_theme_plus_stylesheet" var="source_formalize">
 			<wb:field name="type">file</wb:field>
-			<wb:field name="file">tl_files/Themes/${theme_name}/assets/formalizes/css/_formalize.scss</wb:field>
+			<wb:field name="file">$uploadPath/Themes/${theme_name}/assets/formalizes/css/_formalize.scss</wb:field>
 			<wb:field name="asseticFilter">$assetic_compass_filter</wb:field>
 		</wb:child>
 
 		<!-- layout.scss -->
 		<wb:child table="tl_theme_plus_stylesheet" var="source_layout">
 			<wb:field name="type">file</wb:field>
-			<wb:field name="file">tl_files/Themes/${theme_name}/css/layout.scss</wb:field>
+			<wb:field name="file">$uploadPath/Themes/${theme_name}/css/layout.scss</wb:field>
 			<wb:field name="asseticFilter">$assetic_scss_filter</wb:field>
 		</wb:child>
 
 		<!-- nav.scss -->
 		<wb:child table="tl_theme_plus_stylesheet" var="source_nav">
 			<wb:field name="type">file</wb:field>
-			<wb:field name="file">tl_files/Themes/${theme_name}/css/nav.scss</wb:field>
+			<wb:field name="file">$uploadPath/Themes/${theme_name}/css/nav.scss</wb:field>
 			<wb:field name="asseticFilter">$assetic_scss_filter</wb:field>
 		</wb:child>
 
 		<!-- content.scss -->
 		<wb:child table="tl_theme_plus_stylesheet" var="source_content">
 			<wb:field name="type">file</wb:field>
-			<wb:field name="file">tl_files/Themes/${theme_name}/css/content.scss</wb:field>
+			<wb:field name="file">$uploadPath/Themes/${theme_name}/css/content.scss</wb:field>
 			<wb:field name="editor_integration" eval="true">array('default','newsletter','flash')</wb:field>
 			<wb:field name="asseticFilter">$assetic_scss_filter</wb:field>
 		</wb:child>
@@ -541,13 +541,13 @@ vor.</p>]]></wb:field>
 		<!-- formalize.js -->
 		<wb:child table="tl_theme_plus_javascript" var="source_script_formalize">
 			<wb:field name="type">file</wb:field>
-			<wb:field name="file">tl_files/Themes/${theme_name}/assets/formalize/js/jquery.formalize.js</wb:field>
+			<wb:field name="file">$uploadPath/Themes/${theme_name}/assets/formalize/js/jquery.formalize.js</wb:field>
 		</wb:child>
 
 		<!-- placeholder.jquery.js -->
 		<wb:child table="tl_theme_plus_javascript" var="source_script_placeholder">
 			<wb:field name="type">file</wb:field>
-			<wb:field name="file">tl_files/Themes/${theme_name}/assets/js/placeholder.jquery.js</wb:field>
+			<wb:field name="file">$uploadPath/Themes/${theme_name}/assets/js/placeholder.jquery.js</wb:field>
 		</wb:child>
 
 
