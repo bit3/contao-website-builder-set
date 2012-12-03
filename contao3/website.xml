@@ -470,8 +470,8 @@ vor.</p>]]></wb:field>
 			</wb:field>
 			<wb:field name="template">fe_page</wb:field>
 			<wb:field name="doctype">html5</wb:field>
-			<wb:field name="asseticStylesheetFilter">$assetic_css_chain</wb:field>
-			<wb:field name="asseticJavaScriptFilter">$assetic_js_chain</wb:field>
+			<wb:field name="asseticStylesheetFilter">chain:$assetic_css_chain</wb:field>
+			<wb:field name="asseticJavaScriptFilter">chain:$assetic_js_chain</wb:field>
 			<wb:field name="addJQuery">1</wb:field>
 			<wb:field name="jSource">j_local</wb:field>
 			<wb:field name="jquery" eval="true">
@@ -499,7 +499,7 @@ vor.</p>]]></wb:field>
 			<wb:field name="type">file</wb:field>
 			<wb:field name="file">$uploadPath/Themes/${theme_name}/assets/css/reset.scss</wb:field>
 			<wb:field name="editor_integration" eval="true">array('default','newsletter','flash')</wb:field>
-			<wb:field name="asseticFilter">$assetic_scss_filter</wb:field>
+			<wb:field name="asseticFilter">filter:$assetic_scss_filter</wb:field>
 		</wb:child>
 
 		<!-- normalize.css -->
@@ -513,21 +513,21 @@ vor.</p>]]></wb:field>
 		<wb:child table="tl_theme_plus_stylesheet" var="source_formalize">
 			<wb:field name="type">file</wb:field>
 			<wb:field name="file">$uploadPath/Themes/${theme_name}/assets/formalize/css/_formalize.sass</wb:field>
-			<wb:field name="asseticFilter">$assetic_compass_filter</wb:field>
+			<wb:field name="asseticFilter">filter:$assetic_compass_filter</wb:field>
 		</wb:child>
 
 		<!-- layout.scss -->
 		<wb:child table="tl_theme_plus_stylesheet" var="source_layout">
 			<wb:field name="type">file</wb:field>
 			<wb:field name="file">$uploadPath/Themes/${theme_name}/assets/css/layout.scss</wb:field>
-			<wb:field name="asseticFilter">$assetic_scss_filter</wb:field>
+			<wb:field name="asseticFilter">filter:$assetic_scss_filter</wb:field>
 		</wb:child>
 
 		<!-- nav.scss -->
 		<wb:child table="tl_theme_plus_stylesheet" var="source_nav">
 			<wb:field name="type">file</wb:field>
 			<wb:field name="file">$uploadPath/Themes/${theme_name}/assets/css/nav.scss</wb:field>
-			<wb:field name="asseticFilter">$assetic_scss_filter</wb:field>
+			<wb:field name="asseticFilter">filter:$assetic_scss_filter</wb:field>
 		</wb:child>
 
 		<!-- content.scss -->
@@ -535,7 +535,7 @@ vor.</p>]]></wb:field>
 			<wb:field name="type">file</wb:field>
 			<wb:field name="file">$uploadPath/Themes/${theme_name}/assets/css/content.scss</wb:field>
 			<wb:field name="editor_integration" eval="true">array('default','newsletter','flash')</wb:field>
-			<wb:field name="asseticFilter">$assetic_scss_filter</wb:field>
+			<wb:field name="asseticFilter">filter:$assetic_scss_filter</wb:field>
 		</wb:child>
 
 		<!-- formalize.js -->
