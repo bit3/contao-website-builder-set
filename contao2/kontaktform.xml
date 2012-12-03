@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wb:dataset xmlns:wb="http://contao.bit3.de/website_builder"
 			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-			xsi:schemaLocation="http://contao.bit3.de/website_builder http://contao.bit3.de/website_builder/schema.xsd"
+			xsi:schemaLocation="http://contao.bit3.de/website_builder https://raw.github.com/bit3/contao-WebsiteBuilder/master/src/system/modules/website_builder/config/website_builder.xsd"
 			id="kontaktform-de">
 	<wb:name>(Contao 2) Kontaktformular - deutsch</wb:name>
 	<wb:description>Erstellt ein Kontaktformular.</wb:description>
