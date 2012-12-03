@@ -724,7 +724,7 @@ vor.</p>]]></wb:field>
 	<wb:mkdir>templates/${theme_name}</wb:mkdir>
 
 	<!-- load theme files -->
-	<wb:load target="$uploadPath/Themes/${theme_name}" unzip="true" strip-components="1">
+	<wb:load target="$uploadPath/Themes/${theme_name}" unzip="true" strip-components="1" exclude="*/.gitignore">
 		https://github.com/bit3/contao-WebsiteBuilderSet/archive/theme.zip
 	</wb:load>
 
@@ -732,12 +732,12 @@ vor.</p>]]></wb:field>
 	<wb:load target="$uploadPath/Themes/${theme_name}/assets/normalize">
 		https://raw.github.com/necolas/normalize.css/master/normalize.css
 	</wb:load>
-	<wb:load target="$uploadPath/Themes/${theme_name}/assets/formalize" unzip="true" strip-components="2">
+	<wb:load target="$uploadPath/Themes/${theme_name}/assets/formalize" unzip="true" strip-components="2" exclude="*/.gitignore">
 		https://github.com/nathansmith/formalize/archive/master.zip
 	</wb:load>
 
 	<!-- load theme templates -->
-	<wb:load target="templates/${theme_name}" unzip="true" strip-components="1">
+	<wb:load target="templates/${theme_name}" unzip="true" strip-components="1" exclude="*/.gitignore">
 		https://github.com/bit3/contao-WebsiteBuilderSet/archive/templates.zip
 	</wb:load>
 </wb:dataset>
