@@ -476,13 +476,7 @@ vor.</p>]]></wb:field>
 			<wb:field name="asseticJavaScriptFilter">chain:$assetic_js_chain</wb:field>
 			<wb:field name="addJQuery">1</wb:field>
 			<wb:field name="jSource">j_local</wb:field>
-			<wb:field name="jquery" eval="true">
-				array(
-					'j_accordion',
-					'j_colorbox',
-					'j_mediaelement',
-				)
-			</wb:field>
+			<wb:field name="jquery" eval="true">array()</wb:field>
 			<wb:field name="theme_plus_javascripts" eval="true">
 				array(
 					'$source_script_formalize',
