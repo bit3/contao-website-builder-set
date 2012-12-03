@@ -512,7 +512,7 @@ vor.</p>]]></wb:field>
 		<!-- formalize.scss -->
 		<wb:child table="tl_theme_plus_stylesheet" var="source_formalize">
 			<wb:field name="type">file</wb:field>
-			<wb:field name="file">$uploadPath/Themes/${theme_name}/assets/formalizes/css/_formalize.scss</wb:field>
+			<wb:field name="file">$uploadPath/Themes/${theme_name}/assets/formalize/css/_formalize.scss</wb:field>
 			<wb:field name="asseticFilter">$assetic_compass_filter</wb:field>
 		</wb:child>
 
