@@ -402,6 +402,7 @@ vor.</p>]]></wb:field>
 		<wb:field name="type">yuiCss</wb:field>
 		<wb:field name="note">$theme_name - YUI CSS</wb:field>
 		<wb:field name="yuiPath">/usr/share/yui-compressor/yui-compressor.jar</wb:field>
+		<wb:field name="notInDebug">1</wb:field>
 	</wb:row>
 
 	<!-- YUI-JS Assetic filter -->
@@ -409,6 +410,7 @@ vor.</p>]]></wb:field>
 		<wb:field name="type">yuiJs</wb:field>
 		<wb:field name="note">$theme_name - YUI JS</wb:field>
 		<wb:field name="yuiPath">/usr/share/yui-compressor/yui-compressor.jar</wb:field>
+		<wb:field name="notInDebug">1</wb:field>
 	</wb:row>
 
 	<!-- CSS Assetic filter chain -->
