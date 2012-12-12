@@ -72,7 +72,7 @@ Visit the project website at http://contao.org for more information
 <?php echo $this->mootools; ?>
 <?php if (!$this->disableCron): ?>
 
-<script src="<?php echo TL_ASSETS_URL; ?>assets/contao/js/scheduler.js?t=<?php echo $this->cronTimeout; ?>" id="cron"></script>
+<script src="<?php echo TL_ASSETS_URL; ?>assets/contao/js/scheduler.js?t=<?php echo $this->cronTimeout; ?>" id="cron"<?php if ($this->layout->theme_plus_javascript_lazy_load): ?> async="async" defer="defer"<?php endif; ?>></script>
 <?php endif; ?>
 
 </body>
