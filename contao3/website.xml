@@ -425,7 +425,7 @@ vor.</p>]]></wb:field>
 		<wb:field name="name">$theme_name - CSS Filter</wb:field>
 		<wb:field name="filters" eval="true">
 			array(
-				'filter:${assetic_yuicss_filter}',
+				'filter:${assetic_cssrewrite_filter}',
 				'filter:${assetic_yuicss_filter}',
 			)
 		</wb:field>
