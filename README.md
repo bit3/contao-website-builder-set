@@ -7,9 +7,9 @@ Structure
 ---------
 
 This repository contains 3 branches:
-* [master](https://github.com/bit3/contao-WebsiteBuilderSet) contains the XML files.
-* [theme](https://github.com/bit3/contao-WebsiteBuilderSet/tree/theme) contains the Theme files (css, js, images).
-* [templates](https://github.com/bit3/contao-WebsiteBuilderSet/tree/templates) contains the Contao template files.
+* [master](https://github.com/bit3/contao-website-builder-set) contains the XML files.
+* [theme](https://github.com/bit3/contao-website-builder-set/tree/theme) contains the Theme files (css, js, images).
+* [templates](https://github.com/bit3/contao-website-builder-set/tree/templates) contains the Contao template files.
 
 Requirements
 ------------

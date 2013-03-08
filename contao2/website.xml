@@ -617,9 +617,9 @@ vor.</p>]]></wb:field>
 	<wb:mkdir>$uploadPath/Themes/${theme_name}</wb:mkdir>
 	<wb:mkdir>templates/${theme_name}</wb:mkdir>
 	<wb:load target="$uploadPath/Themes/${theme_name}" unzip="true">
-		https://github.com/bit3/contao-WebsiteBuilderSet/archive/theme.zip
+		https://github.com/bit3/contao-website-builder-set/archive/theme.zip
 	</wb:load>
 	<wb:load target="templates/${theme_name}" unzip="true">
-		https://github.com/bit3/contao-WebsiteBuilderSet/archive/templates.zip
+		https://github.com/bit3/contao-website-builder-set/archive/templates.zip
 	</wb:load>
 </wb:dataset>

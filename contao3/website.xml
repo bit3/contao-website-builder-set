@@ -728,7 +728,7 @@ vor.</p>]]></wb:field>
 
 	<!-- load theme files -->
 	<wb:load target="$uploadPath/Themes/${theme_name}" unzip="true" strip-components="1" exclude="*/.gitignore">
-		https://github.com/bit3/contao-WebsiteBuilderSet/archive/theme.zip
+		https://github.com/bit3/contao-website-builder-set/archive/theme.zip
 	</wb:load>
 
 	<!-- load theme assets -->
@@ -741,6 +741,6 @@ vor.</p>]]></wb:field>
 
 	<!-- load theme templates -->
 	<wb:load target="templates/${theme_name}" unzip="true" strip-components="1" exclude="*/.gitignore">
-		https://github.com/bit3/contao-WebsiteBuilderSet/archive/templates.zip
+		https://github.com/bit3/contao-website-builder-set/archive/templates.zip
 	</wb:load>
 </wb:dataset>
